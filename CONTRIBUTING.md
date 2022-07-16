@@ -27,3 +27,29 @@ information on using pull requests.
 This project follows [Google's Open Source Community
 Guidelines](https://opensource.google/conduct/).
 
+## Developing
+
+If you want to develop as part of your code, it may be convenient to use a local copy. To do that, add the followign to the go.mod of your project -
+
+```
+...
+require github.com/hirak99/go-sanity v0.1.4
+replace github.com/hirak99/go-sanity v0.1.4 => ./sanity
+...
+```
+
+Then copy the .go files from this project, to the subdirectory ./sanity of your project.
+
+## Releasing
+
+For most people, a maintainer will release a new version after pulling in your changes.
+
+If you have access to the git repo, simply follow this process to release a version.
+
+```bash
+# Add a tag locally incrementing version.
+git tag v1.0.0
+
+# Update the tag on to the repo.
+git push origin v1.0.0
+```
