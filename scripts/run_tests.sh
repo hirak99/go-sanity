@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+set -uexo pipefail
 readonly MY_PATH=$(cd $(dirname "$0") && pwd)
-cd $MY_PATH/../src
+cd $MY_PATH/..
 go test ./...
