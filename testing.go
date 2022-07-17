@@ -16,6 +16,7 @@ package sanity
 
 import (
 	"fmt"
+	"os"
 	"reflect"
 	"regexp"
 	"runtime/debug"
@@ -30,11 +31,12 @@ func printStack() {
 	stack := string(debug.Stack())
 	lines := strings.Split(stack, "\n")
 	var firstLineOut int
+	rTestingGoEnd := regexp.MustCompile(string(os.PathSeparator) + `testing.go:`)
 	for i, line := range lines {
 		if line[0] != '\t' {
 			continue
 		}
-		match, _ := regexp.MatchString(`/testing.go:`, line)
+		match := rTestingGoEnd.MatchString(line)
 		// The first line after any `/testing.go` match is outside this module.
 		if match {
 			firstLineOut = i + 1
