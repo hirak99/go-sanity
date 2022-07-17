@@ -39,6 +39,21 @@ func TestMap(t *testing.T) {
 		[]float64{1, 3, 5})
 }
 
+func TestReduce(t *testing.T) {
+	s := []string{"ab", "cd", "efg"}
+	AssertEqual(t,
+		Reduce(s, "", func(x, y string) string { return x + y }),
+		"abcdefg")
+	AssertEqual(t,
+		Reduce(s, "__", func(x, y string) string { return x + y }),
+		"__abcdefg")
+}
+
+func TestSum(t *testing.T) {
+	AssertEqual(t, Sum([]int64{1, 2, 3, 5}), 11)
+	AssertEqual(t, Sum([]float32{1.8, 2, 3, 5}), 11.8)
+}
+
 func TestFilter(t *testing.T) {
 	AssertSliceEqual(t,
 		Filter([]uint64{0, 2, 4, 6, 8, 10},

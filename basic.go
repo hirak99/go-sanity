@@ -18,6 +18,11 @@ import (
 	"sort"
 )
 
+type numeric interface {
+	int | int16 | int32 | int64 | float32 | float64 |
+		uint | uint16 | uint32 | uint64
+}
+
 func If[T any](cond bool, vtrue, vfalse T) T {
 	if cond {
 		return vtrue
@@ -41,6 +46,17 @@ func Filter[T any](list []T, cond func(int, T) bool) []T {
 		}
 	}
 	return newList
+}
+
+func Reduce[T any](array []T, t T, rf func(x, y T) T) T {
+	for _, v := range array {
+		t = rf(t, v)
+	}
+	return t
+}
+
+func Sum[T numeric](array []T) T {
+	return Reduce(array, 0, func(x, y T) T { return x + y })
 }
 
 func FilterChan[T any](c <-chan T, f func(T) bool) <-chan T {

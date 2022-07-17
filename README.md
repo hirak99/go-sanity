@@ -19,13 +19,14 @@ package main
 
 import (
   "fmt"
-  . "github.com/hirak99/go-sanity"
+
+  "github.com/hirak99/go-sanity"
 )
 
 func main() {
   nums := []int{1, 2, 3, 4, 5, 6, 7, 8}
 
-  odds := Filter(nums, func(n int) bool { return n % 2 == 1 })
+  odds := sanity.Filter(nums, func(n int) bool { return n % 2 == 1 })
   fmt.Println(odds)
 }
 ```
@@ -34,13 +35,15 @@ func main() {
 
 ### Methods
 
-| Function      | Example                                                                   |
-| ------------- | ------------------------------------------------------------------------- |
-| Ternary if    | `If(a == b, "yes", "no")`                                                 |
-| Map           | `Map([]string{"12", "34"}, func(s string) int { return strconv.Atoi(s) }` |
-| Filter        | `Filter([]int{10, 33, 59, 93}, func(i int) bool { return i > 50 }`        |
-| ChanToSlice   | `ChanToSlice(c)`                                                          |
-| SaneSortSlice | `SaneSortSlice(s, func(a, b string) { return a < b})`                     |
+| Function      | Example                                                                       |
+| ------------- | ----------------------------------------------------------------------------- |
+| Ternary if    | `If(a == b, "yes", "no")`                                                     |
+| Map           | `Map([]string{"12", "34"}, func(s string) int { return strconv.Atoi(s) })`    |
+| Reduce        | `Reduce([]string{"12", "34"}, "", func(x, y string) string { return x + y })` |
+| Filter        | `Filter([]int{10, 33, 59, 93}, func(i int) bool { return i > 50 }`            |
+| Sum           | `Sum([]float64{1.1, 2.3, 4.8})`                                               |
+| ChanToSlice   | `ChanToSlice(c)`                                                              |
+| SaneSortSlice | `SaneSortSlice(s, func(a, b string) { return a < b})`                         |
 
 ### Collections
 | Function | Example                                                         |
