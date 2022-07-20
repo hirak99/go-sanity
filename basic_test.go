@@ -49,6 +49,16 @@ func TestReduce(t *testing.T) {
 		"__abcdefg")
 }
 
+func TestAnyAll(t *testing.T) {
+	arr := []string{"ab", "cd", "efg"}
+
+	Assert(t, Any(arr, func(s string) bool { return s[0] == 'c' }))
+	Assert(t, !Any(arr, func(s string) bool { return s[0] == 'z' }))
+
+	Assert(t, All(arr, func(s string) bool { return s[0] != 'z' }))
+	Assert(t, !All(arr, func(s string) bool { return s[0] != 'c' }))
+}
+
 func TestSum(t *testing.T) {
 	AssertEqual(t, Sum([]int64{1, 2, 3, 5}), 11)
 	AssertEqual(t, Sum([]float32{1.8, 2, 3, 5}), 11.8)

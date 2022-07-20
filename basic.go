@@ -72,6 +72,24 @@ func FilterChan[T any](c <-chan T, f func(T) bool) <-chan T {
 	return out
 }
 
+func Any[T any](array []T, f func(T) bool) bool {
+	for _, e := range array {
+		if f(e) {
+			return true
+		}
+	}
+	return false
+}
+
+func All[T any](array []T, f func(T) bool) bool {
+	for _, e := range array {
+		if !f(e) {
+			return false
+		}
+	}
+	return true
+}
+
 // Generator to slice.
 func ChanToSlice[T any](c <-chan T) []T {
 	var result []T
