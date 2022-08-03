@@ -43,7 +43,7 @@ func main() {
 | Ternary if    | `If(a == b, "yes", "no")`                                                     |
 | Map           | `Map([]string{"12", "34"}, func(s string) int { return strconv.Atoi(s) })`    |
 | Reduce        | `Reduce([]string{"12", "34"}, "", func(x, y string) string { return x + y })` |
-| Filter        | `Filter([]int{10, 33, 59, 93}, func(i int) bool { return i > 50 }`            |
+| Filter        | `Filter([]int{10, 33, 59, 93}, func(i int) bool { return i > 50 })`           |
 | Any           | `Any([]int{1, 2, 3}, func(i int) bool { return i > 2 })`                      |
 | All           | `All([]int{1, 2, 3}, func(i int) bool { return i > 0 })`                      |
 | Sum           | `Sum([]float64{1.1, 2.3, 4.8})`                                               |
