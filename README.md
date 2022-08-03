@@ -36,30 +36,30 @@ func main() {
 
 ## Content
 
-### Methods
+### Generic Methods
 
 | Function      | Example                                                                       |
 | ------------- | ----------------------------------------------------------------------------- |
 | Ternary if    | `If(a == b, "yes", "no")`                                                     |
 | Map           | `Map([]string{"12", "34"}, func(s string) int { return strconv.Atoi(s) })`    |
 | Reduce        | `Reduce([]string{"12", "34"}, "", func(x, y string) string { return x + y })` |
-| Any           | `Any([]int{1, 2, 3}, func(i int) bool { return i > 2})`                       |
-| All           | `All([]int{1, 2, 3}, func(i int) bool { return i > 0})`                       |
 | Filter        | `Filter([]int{10, 33, 59, 93}, func(i int) bool { return i > 50 }`            |
+| Any           | `Any([]int{1, 2, 3}, func(i int) bool { return i > 2 })`                      |
+| All           | `All([]int{1, 2, 3}, func(i int) bool { return i > 0 })`                      |
 | Sum           | `Sum([]float64{1.1, 2.3, 4.8})`                                               |
 | ChanToSlice   | `ChanToSlice(c)`                                                              |
-| SaneSortSlice | `SaneSortSlice(s, func(a, b string) { return a < b})`                         |
+| SaneSortSlice | `SaneSortSlice(s, func(a, b string) bool { return a < b })`                   |
 
-### Collections
+### Generic Collections
 | Function | Example                                                         |
 | -------- | --------------------------------------------------------------- |
 | Set      | `s := MakeSet[int]()`, then use `s.Add(...)`, `s.Has(...)` etc. |
 
-### Testing
+### Testing Helpers
 
 | Function                  | Example                                      |
 | ------------------------- | -------------------------------------------- |
 | Assert                    | `Assert(t, something_that_should_be_true())` |
-| AssertEqual               | `Assert(t, a, b)`                            |
+| AssertEqual               | `AssertEqual(t, a, b)`                       |
 | AssertSliceEqual          | `AssertSliceEqual(t, s1, s2)`                |
 | AssertSliceEqualUnordered | `AssertSliceEqualUnordered(t, s1, s2)`       |
